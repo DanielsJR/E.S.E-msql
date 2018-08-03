@@ -1,13 +1,11 @@
 package nx.ESE.repositories;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-
-import nx.ESE.documents.Preferences;
+import nx.ESE.entities.Preferences;
 
 	
-	public interface PreferencesRepository extends MongoRepository<Preferences, String>{
+	public interface PreferencesRepository extends JpaRepository<Preferences, String>{
 		
 		
 		//@Query("{'user':{'$ref':'user','$id':?0 } }")

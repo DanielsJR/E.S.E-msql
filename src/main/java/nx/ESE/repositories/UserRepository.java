@@ -2,15 +2,15 @@ package nx.ESE.repositories;
 
 import java.util.List;
 
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-import nx.ESE.documents.Role;
-import nx.ESE.documents.User;
 import nx.ESE.dtos.UserDto;
 import nx.ESE.dtos.UserMinDto;
+import nx.ESE.entities.Role;
+import nx.ESE.entities.User;
 
-public interface UserRepository extends MongoRepository<User, String> {
+public interface UserRepository extends JpaRepository<User, String> {
 	
 	public User findByUsername(String username);
 	
@@ -22,13 +22,11 @@ public interface UserRepository extends MongoRepository<User, String> {
 	
 	public User findByRoles(Role[]  roles);
 	
-	@Query("{ 'id' : ?0 }")
-	public User findByIdQuery(String id);
 
-	@Query(value = "{'roles' : ?0}", fields = "{ '_id' : 1, 'firstName' : 1, 'lastName' : 1}")
+	@Query("select u.username from User u where u.roles like ?1")
 	public List<UserMinDto> findUsersAll(Role role);
 	
-	@Query(value = "{'roles' : ?0}", fields = "{ 'password' : 0 }")
+	@Query("select u from User u join u.roles ur where ur like ?1")
 	public List<UserDto> findUsersFullAll(Role role);
 
 }

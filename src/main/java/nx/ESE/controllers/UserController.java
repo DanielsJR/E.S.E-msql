@@ -12,12 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 
-import nx.ESE.documents.Avatar;
-import nx.ESE.documents.Gender;
-import nx.ESE.documents.Role;
-import nx.ESE.documents.User;
 import nx.ESE.dtos.UserDto;
 import nx.ESE.dtos.UserMinDto;
+import nx.ESE.entities.Avatar;
+import nx.ESE.entities.Gender;
+import nx.ESE.entities.Role;
+import nx.ESE.entities.User;
 import nx.ESE.repositories.UserRepository;
 import nx.ESE.resources.exceptions.ForbiddenException;
 import nx.ESE.resources.exceptions.PasswordNotMatchException;
@@ -103,7 +103,7 @@ public class UserController {
 
 	// Exceptions*********************
 	public boolean existsUserId(String id) {
-		return this.userRepository.findByIdQuery(id) != null;
+		return this.userRepository.findById(id).isPresent();
 	}
 
 	public boolean existsUserUsername(String username) {
@@ -145,7 +145,7 @@ public class UserController {
 	}
 	
 	public boolean checkEqualOrGreaterPrivileges_Id(String id, Role[] roles) {
-		User user = this.userRepository.findByIdQuery(id);
+		User user = this.userRepository.findById(id).get();
 		return user != null && Arrays.asList(roles).containsAll(Arrays.asList(user.getRoles()));
 	}
 
@@ -170,7 +170,7 @@ public class UserController {
 	}
 
 	public UserDto getUserById(String id) {
-		User user = this.userRepository.findByIdQuery(id);
+		User user = this.userRepository.findById(id).get();
 		this.setOutPutUserAvatar(user);
 		return new UserDto(user);
 

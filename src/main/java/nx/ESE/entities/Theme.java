@@ -1,16 +1,36 @@
-package nx.ESE.documents;
+package nx.ESE.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
+
+//@Entity
+@Embeddable
 public class Theme {
+	
+	/*@Id
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid", strategy = "uuid")
+	private String id;
+	public String getId() {
+		return id;
+	}*/
 
+	@Column(name = "theme_name")
 	private String name;
 	
+	@Column(name = "theme_isDark")
 	private boolean isDark;
 	
+	@Column(name = "theme_color")
 	private String color;
 	
 	public Theme() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 
@@ -20,6 +40,10 @@ public class Theme {
 		this.isDark = isDark;
 		this.color = color;
 	}
+	
+	
+
+
 
 	public String getName() {
 		return name;

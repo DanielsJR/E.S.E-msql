@@ -6,7 +6,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
 
 import nx.ESE.controllers.AuthenticationController;
-import nx.ESE.documents.LoginUser;
+import nx.ESE.entities.LoginUser;
 
 //@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

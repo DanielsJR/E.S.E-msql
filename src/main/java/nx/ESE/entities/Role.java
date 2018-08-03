@@ -1,6 +1,7 @@
-package nx.ESE.documents;
+package nx.ESE.entities;
 
-public enum Role {
+
+public enum Role{
 	ADMIN, MANAGER, TEACHER, STUDENT, PROXY, AUTHENTICATED;
 
 	public String roleName() {

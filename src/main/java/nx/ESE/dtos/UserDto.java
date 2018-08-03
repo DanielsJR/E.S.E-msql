@@ -11,12 +11,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-import nx.ESE.documents.Avatar;
-import nx.ESE.documents.Commune;
-import nx.ESE.documents.Gender;
-import nx.ESE.documents.Role;
-import nx.ESE.documents.User;
 import nx.ESE.dtos.validators.RUTValid;
+import nx.ESE.entities.Avatar;
+import nx.ESE.entities.Commune;
+import nx.ESE.entities.Gender;
+import nx.ESE.entities.Role;
+import nx.ESE.entities.User;
 import nx.ESE.utils.Capitalizer;
 
 

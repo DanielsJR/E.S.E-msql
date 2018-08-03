@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import nx.ESE.controllers.UserController;
-import nx.ESE.documents.Role;
 import nx.ESE.dtos.UserDto;
 import nx.ESE.dtos.UserMinDto;
+import nx.ESE.entities.Role;
 import nx.ESE.resources.exceptions.ForbiddenException;
 import nx.ESE.resources.exceptions.PasswordNotMatchException;
 import nx.ESE.resources.exceptions.UserFieldAlreadyExistException;

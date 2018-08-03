@@ -15,11 +15,13 @@ import org.springframework.stereotype.Service;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 
-import nx.ESE.documents.Avatar;
-import nx.ESE.documents.Gender;
-import nx.ESE.documents.Role;
-import nx.ESE.documents.User;
+import nx.ESE.entities.Avatar;
+import nx.ESE.entities.Gender;
+import nx.ESE.entities.Role;
+import nx.ESE.entities.User;
+import nx.ESE.repositories.CourseRepository;
 import nx.ESE.repositories.PreferencesRepository;
+import nx.ESE.repositories.SubjectRepository;
 import nx.ESE.repositories.UserRepository;
 
 @Service
@@ -39,6 +41,12 @@ public class DatabaseSeederService {
 	
 	@Autowired
 	private PreferencesRepository preferencesRepository;
+	
+	@Autowired
+	private CourseRepository courseRepository;
+	
+	@Autowired
+	private SubjectRepository subjectRepository;
 	
 	private static final Logger logger = LoggerFactory.getLogger(DatabaseSeederService.class);
 
@@ -70,6 +78,14 @@ public class DatabaseSeederService {
 		if (dbGraph.getPreferencesList() != null) {
 			this.preferencesRepository.saveAll(dbGraph.getPreferencesList());
 		}
+		
+		if (dbGraph.getCoursesList() != null) {
+			this.courseRepository.saveAll(dbGraph.getCoursesList());
+		}
+		
+		if (dbGraph.getSubjectsList() != null) {
+			this.subjectRepository.saveAll(dbGraph.getSubjectsList());
+		}
 
 		logger.warn("------------------------- Seed: " + ymlFileName + "-----------");
 	}
@@ -83,6 +99,7 @@ public class DatabaseSeederService {
 	}
 
 	public void createAdminIfNotExist() {
+		logger.warn("------------------------- createAdminIfNotExist()-----------");
 		if (this.userRepository.findByUsername(this.username) == null) {
 			User user = new User(this.username, this.password);
 			user.setFirstName("Daniel Jesús");

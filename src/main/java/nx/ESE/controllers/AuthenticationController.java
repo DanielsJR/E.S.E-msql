@@ -9,8 +9,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 
 import nx.ESE.config.TokenProvider;
-import nx.ESE.documents.AuthToken;
-import nx.ESE.documents.LoginUser;
+import nx.ESE.entities.AuthToken;
+import nx.ESE.entities.LoginUser;
 
 @Controller
 public class AuthenticationController {

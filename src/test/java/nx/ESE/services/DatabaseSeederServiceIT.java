@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import nx.ESE.documents.User;
+import nx.ESE.entities.User;
 import nx.ESE.repositories.UserRepository;
 
 

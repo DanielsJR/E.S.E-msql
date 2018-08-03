@@ -8,8 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import nx.ESE.documents.Role;
-import nx.ESE.documents.User;
+import nx.ESE.entities.Role;
+import nx.ESE.entities.User;
 import nx.ESE.repositories.UserRepository;
 
 import java.util.*;

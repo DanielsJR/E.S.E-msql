@@ -1,4 +1,4 @@
-package nx.ESE.documents;
+package nx.ESE.entities;
 
 public class LoginUser {
 

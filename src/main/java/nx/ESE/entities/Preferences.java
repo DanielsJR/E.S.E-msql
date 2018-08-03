@@ -1,23 +1,32 @@
-package nx.ESE.documents;
+package nx.ESE.entities;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
-@Document
+import org.hibernate.annotations.GenericGenerator;
+
+
+@Entity
 public class Preferences {
 
 	@Id
+	@GeneratedValue(generator="system-uuid")
+	@GenericGenerator(name="system-uuid", strategy = "uuid")
 	private String id;
 	
-	@DBRef
+	@OneToOne//(cascade = CascadeType.ALL)
 	private User user;
 
+	//@ManyToOne
+	@Embedded
 	private Theme theme;
 
 	public Preferences() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

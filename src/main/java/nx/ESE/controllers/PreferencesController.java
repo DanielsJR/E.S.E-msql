@@ -3,10 +3,10 @@ package nx.ESE.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import nx.ESE.documents.Preferences;
-import nx.ESE.documents.Theme;
-import nx.ESE.documents.User;
 import nx.ESE.dtos.ThemeDto;
+import nx.ESE.entities.Preferences;
+import nx.ESE.entities.Theme;
+import nx.ESE.entities.User;
 import nx.ESE.repositories.PreferencesRepository;
 import nx.ESE.repositories.UserRepository;
 
@@ -49,7 +49,7 @@ public class PreferencesController {
 			return true;
 		}
 
-		User user = this.userRepository.findByIdQuery(id);
+		User user = this.userRepository.findById(id).get();
 		if (user != null) {
 			preferences = new Preferences(user, nTheme);
 			preferencesRepository.save(preferences);
